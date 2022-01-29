@@ -18,8 +18,10 @@ jobs:
           dotnet-version: 5.0.x
       
       - name: Restore dependencies
-        run: dotnet restore WeatherForecast_CI_CD
+        run: dotnet restore
       
       - name: Build and release projcet
-        run: dotnet build WeatherForecast_CI_CD -c Release --no-restore
-        
+        run: dotnet build -c Release --no-restore
+      
+      - name: Run tests
+        run: dotnet test -c Release --no-restore
