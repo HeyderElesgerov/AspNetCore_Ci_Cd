@@ -1,0 +1,1 @@
+[![Contunious Integration and deployment](https://github.com/HeyderElesgerov/AspNetCore_Ci_Cd/actions/workflows/ci-cd.yaml/badge.svg?branch=master)](https://github.com/HeyderElesgerov/AspNetCore_Ci_Cd/actions/workflows/ci-cd.yaml)
