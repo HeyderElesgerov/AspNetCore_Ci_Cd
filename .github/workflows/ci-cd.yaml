@@ -26,7 +26,7 @@ jobs:
         run: dotnet build
         
       - name: Publish Web project to folder
-        run: dotnet publish WeatherForecast_CI_CD -o myapp -c Release --no-build
+        run: dotnet publish WeatherForecast_CI_CD -o ./myapp -c Release --no-build
       
       - name: Run tests
         run: dotnet test -c Release --no-restore
