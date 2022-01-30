@@ -22,14 +22,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
-      - name: Restore dependencies
-        run: dotnet restore
-      
-      - name: Build and release projcet
-        run: dotnet build -c Release --no-restore
+      - name: Build and restore projcet
+        run: dotnet build
         
-      - name: Publish project to folder
-        run: dotnet publish -c Release -o ./myapp
+      - name: Publish Web project to folder
+        run: dotnet publish WeatherForecast_CI_CD -o myapp -c Release --no-build
       
       - name: Run tests
         run: dotnet test -c Release --no-restore
