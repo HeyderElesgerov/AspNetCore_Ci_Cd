@@ -7,7 +7,7 @@ on:
       - 
 env:
   AZURE_WEBAPP_NAME: 'weatherforecast-ci-cd'
-  AZURE_WEBAPP_PACKAGE_PATH: './WeatherForecast_CI_CD'
+  AZURE_WEBAPP_PACKAGE_PATH: 'myapp/'
   DOTNET_VERSION: '5.0.x'
   
 jobs:
@@ -27,6 +27,9 @@ jobs:
       
       - name: Build and release projcet
         run: dotnet build -c Release --no-restore
+        
+      - name: Publish project to folder
+        run: dotnet publish -c Release -o ./myapp
       
       - name: Run tests
         run: dotnet test -c Release --no-restore
@@ -36,4 +39,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZUR_WEBAPP_PUBLISH_SECRET  }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
