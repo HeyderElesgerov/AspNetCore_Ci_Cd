@@ -7,7 +7,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: 'weatherforecast-ci-cd'
-  AZURE_WEBAPP_PACKAGE_PATH: 'WeatherForecast_CI_CD/bin/Release/net5.0/publish/'
+  AZURE_WEBAPP_PACKAGE_PATH: '/webapp-publish'
   DOTNET_VERSION: '5.0.x'
   
 jobs:
@@ -26,10 +26,10 @@ jobs:
         run: dotnet build -c Release
         
       - name: Run tests
-        run: dotnet test WeatherForecast_CI_CD.Tests/ -c Release --no-restore
+        run: dotnet test -c Release --no-restore
 
       - name: Publish Web project to folder
-        run: dotnet publish WeatherForecast_CI_CD -c Release --no-build
+        run: dotnet publish WeatherForecast_CI_CD -c Release -o ./webapp-publish --no-build
         
       - name: Run Azure webapp deploy action using publish profile credentials
         uses: azure/webapps-deploy@v2
